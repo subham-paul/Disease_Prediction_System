@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: #0d0d0d !important;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .about-container {
+        width: 75%;
+        margin: 50px auto;
+        background: #111;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(0, 128, 255, 0.25);
+        border: 1px solid rgba(0, 128, 255, 0.35);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .about-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .about-left h2 {
+        color: #4da6ff;
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .about-left p {
+        color: #ddd;
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    .about-logo {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: #0d0d0d;
+        padding: 12px;
+        border: 3px solid #4da6ff;
+        box-shadow: 0 0 25px rgba(0, 128, 255, 0.45);
+        object-fit: cover;
+    }
+
+    /* Cards */
+    .card-section {
+        margin-top: 45px;
+        display: flex;
+        justify-content: space-between;
+        gap: 25px;
+    }
+
+    .info-card {
+        flex: 1;
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 4px solid #4da6ff;
+        box-shadow: 0 0 18px rgba(0, 128, 255, 0.25);
+        transition: 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px rgba(0, 128, 255, 0.4);
+    }
+
+    .info-card h3 {
+        color: #4da6ff;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .info-card p {
+        color: #ccc;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+
+<div class="about-container">
+
+    <!-- TOP SECTION: LEFT TEXT + RIGHT LOGO -->
+    <div class="about-top">
+
+        <!-- LEFT SIDE TEXT -->
+        <div class="about-left">
+            <h2>About Us</h2>
+            <p>
+                The <b>Health Prediction System</b> is an advanced ML-powered platform designed to help
+                users understand their possible health conditions based on symptoms they enter.
+            </p>
+            <p>
+                Our system uses modern <span style="color:#4da6ff;">AI-driven prediction models</span> 
+                to provide early insights and guide users toward better health awareness.
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE LOGO -->
+        <img src="https://cdn-icons-png.flaticon.com/512/7661/7661966.png" class="about-logo" alt="Logo">
+
+    </div>
+
+
+    <!-- CARD SECTION BELOW -->
+    <div class="card-section">
+
+        <div class="info-card">
+            <h3>Our Vision</h3>
+            <p>
+                To make early health awareness accessible to everyone using intelligent machine learning.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>Our Technology</h3>
+            <p>
+                Built using Python, Flask, ML Models (Random Forest, SVM, Logistic Regression), HTML, CSS.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>Our Goal</h3>
+            <p>
+                Helping individuals identify possible diseases early and take informed health decisions.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

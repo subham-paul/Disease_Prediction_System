@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: #0d0d0d !important;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .contact-wrapper {
+        width: 60%;
+        margin: 60px auto;
+        background: #111;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(0, 128, 255, 0.25);
+        border: 1px solid rgba(0, 128, 255, 0.35);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+        color: #4da6ff;
+        text-align: center;
+        background: #003d80;
+        padding: 12px;
+        border-radius: 8px;
+        width: fit-content;
+        margin: 0 auto 20px;
+        font-size: 26px;
+    }
+
+    .contact-info {
+        line-height: 2;
+        font-size: 18px;
+        padding: 10px 5px;
+    }
+
+    .contact-info b {
+        color: #4da6ff;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="contact-wrapper">
+    <h2>Contact Us</h2>
+
+    <p style="text-align:center; color:#ddd; font-size:17px;">
+        If you have any questions, feel free to reach out.
+    </p>
+
+    <div class="contact-info">
+        📧 Email: <b>support@healthpredict.com</b><br>
+        📞 Phone: <b>+91 9876543210</b><br>
+        📍 Address: <b>Kolkata, India</b>
+    </div>
+</div>
+
+    
+
+{% endblock %}

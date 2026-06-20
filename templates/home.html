@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction System</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #000000;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #0A0A0A !important;
+            padding: 15px 0;
+            box-shadow: 0 0 20px rgba(0, 162, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4d4d !important;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-size: 18px;
+            margin-left: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #3EA6FF !important;
+        }
+
+        /* VIDEO BACKGROUND HERO */
+        .hero {
+            position: relative;
+            height: 80vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.4); /* Dark overlay effect */
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.9;
+        }
+
+        .btn-main {
+            padding: 12px 30px;
+            background: #4d59ff;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .btn-main:hover {
+            background: #3363ff;
+            transform: scale(1.05);
+        }
+
+        /* FEATURES SECTION */
+        .section {
+            padding: 70px 0;
+        }
+
+        h2 {
+            color: #3EA6FF;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .feature-card {
+            padding: 25px;
+            border-radius: 18px;
+            background: #0A0A0A;
+            box-shadow: 0 0 25px rgba(0, 162, 255, 0.15);
+            border: 1px solid #111;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(0, 162, 255, 0.35);
+        }
+
+        .feature-card h4 {
+            color: #3EA6FF;
+        }
+
+        .feature-card p {
+            color: #ccc;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0A0A0A;
+            color: #bbb;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #111;
+        }
+
+        footer a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+footer a:hover {
+    color: #3EA6FF !important;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Disease Predictor</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/predict_page" class="nav-link">Predict</a></li>
+                    <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH VIDEO -->
+    <div class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="https://cdn.pixabay.com/video/2022/02/10/107310-676158773_large.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>AI Disease Prediction System</h1>
+            <p>Predict possible diseases using Machine Learning in seconds</p>
+            <a href="/predict_page" class="btn btn-main mt-3">Start Prediction</a>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <h2>Why Choose Our Predictor?</h2>
+                <p>Fast, accurate & AI-powered medical predictions</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <h4>⚡ Fast Results</h4>
+                        <p>Get instant predictions using trained ML models.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <h4>🤖 Multi-Model Accuracy</h4>
+                        <p>Uses Logistic Regression, SVM, Random Forest & Naive Bayes.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <h4>🛡 Secure & Private</h4>
+                        <p>Your data stays safe. No storage, no sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-4 pb-3">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Disease Prediction System</h5>
+                    <p>
+                        An AI-powered medical prediction tool built using Machine Learning to help users
+                        quickly identify possible diseases based on symptoms.
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/predict_page">Predict</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <p>Email: support@diseasepredict.ai</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Location: Kolkata, India</p>
+                </div>
+            </div>
+
+            <hr class="border-light">
+
+            <p class="text-center mb-0">
+                © 2025 Disease Prediction System | All Rights Reserved  
+            </p>
+
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

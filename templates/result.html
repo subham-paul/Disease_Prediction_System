@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    body {
+        background: #0d0d0d !important;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .content, .container, .main, .wrapper {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+    }
+
+    /* MAIN FLEX — 50/50 layout centered */
+    .main-flex {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        padding: 20px 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    /* Each box EXACT 50% width */
+    .graph-box, .result-container {
+        width: 50%;
+        max-width: 600px;
+        background: #111;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.22);
+    }
+
+    .result-container {
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 0, 0, 0.25);
+        animation: fadeIn 0.7s ease-in-out;
+    }
+
+    h2 {
+        color: #4da6ff;
+        background: #003d80;
+        padding: 10px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    h3 {
+        color: #ff4d4d;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .overall-box {
+        background: #280000;
+        border-left: 5px solid #ff3333;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    .predict-btn {
+        background: #ff3333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .predict-btn:hover {
+        background: #cc0000;
+    }
+
+    /* Suggested Advice Box */
+    .suggest-box {
+        background: #1a1a1a;
+        border-left: 4px solid #4da6ff;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 35px;
+    }
+
+    /* Fade animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
+
+<!-- MAIN TWO COLUMN LAYOUT -->
+<div class="main-flex">
+
+    <!-- LEFT CONTAINER (GRAPH + SUGGESTIONS) -->
+    <div class="graph-box">
+
+        <h3 style="text-align:center;">Prediction Comparison Chart</h3>
+        <canvas id="modelChart"></canvas>
+
+        <div class="suggest-box">
+            <h3>Suggested Advice:</h3>
+            <p>{{ suggestions }}</p>
+        </div>
+
+    </div>
+
+    <!-- RIGHT CONTAINER -->
+    <div class="result-container">
+
+        <h2>Hello {{ name }}, here are your results:</h2>
+
+        <h3>Model-wise Predictions:</h3>
+        <ul>
+            <li>Logistic Regression: <b>{{ pred1 }}</b></li>
+            <li>Random Forest: <b>{{ pred2 }}</b></li>
+            <li>SVM: <b>{{ pred3 }}</b></li>
+            <li>Naive Bayes: <b>{{ pred4 }}</b></li>
+        </ul>
+
+        <div class="overall-box">
+            🔥 <b>Overall Disease Prediction: {{ overall }}</b>
+        </div>
+
+        <a href="/predict_page" class="predict-btn">Predict Again</a>
+
+    </div>
+
+</div>
+
+<script>
+    const ctx = document.getElementById('modelChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['LogReg', 'RandomForest', 'SVM', 'NaiveBayes'],
+            datasets: [{
+                label: 'Prediction Match',
+                data: [
+                    "{{ pred1 }}" === "{{ overall }}" ? 1 : 0,
+                    "{{ pred2 }}" === "{{ overall }}" ? 1 : 0,
+                    "{{ pred3 }}" === "{{ overall }}" ? 1 : 0,
+                    "{{ pred4 }}" === "{{ overall }}" ? 1 : 0
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+</script>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-4 pb-3">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- About -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Disease Prediction System</h5>
+                    <p>
+                        An AI-powered medical prediction tool built using Machine Learning to help users
+                        quickly identify possible diseases based on symptoms.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="/predict_page" class="text-white text-decoration-none">Predict</a></li>
+                        <li><a href="/about" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="/contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-4 mb-3">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <p>Email: support@diseasepredict.ai</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Location: Kolkata, India</p>
+                </div>
+            </div>
+
+            <hr class="border-light">
+
+            <p class="text-center mb-0">
+                © 2025 Disease Prediction System | All Rights Reserved  
+            </p>
+
+        </div>
+    </footer>
+
+
+{% endblock %}
